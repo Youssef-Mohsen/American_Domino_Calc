@@ -12,7 +12,7 @@ class AppCubit extends Cubit<AddStates> {
 //Attributes
   int numberOfUsers = 2;
   int gameScore = 51;
-  List numbers = [2, 4];
+  List numbers = [2, 3, 4];
   List numbersGame = [51, 71, 101, 150, 200];
 
   int score1 = 0;
@@ -119,7 +119,7 @@ class AppCubit extends Cubit<AddStates> {
 
   void gameEnd(BuildContext context) {
     int result = max(max(score1, score2), max(score3, score4));
-    if(result > gameScore) {
+    if (result > gameScore) {
       String winner;
       if (result == score1) {
         winner = player1.text;
@@ -132,19 +132,17 @@ class AppCubit extends Cubit<AddStates> {
       }
       showDialog(
           context: context,
-          builder: (BuildContext context) =>
-              AlertDialog(
-                  backgroundColor:
-                  theme.onPrimaryContainer,
+          builder: (BuildContext context) => AlertDialog(
+                  backgroundColor: theme.onPrimaryContainer,
                   title: const Text(
                     "Congratulations!",
                     style: TextStyle(color: Colors.white, fontSize: 19),
                     textAlign: TextAlign.center,
                   ),
                   content: Text(
-                    "Winner is ${winner.substring(0, 1).toUpperCase() +
-                        winner.substring(1)}!",
-                    style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+                    "Winner is ${winner.substring(0, 1).toUpperCase() + winner.substring(1)}!",
+                    style: const TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
                   actions: [
@@ -160,10 +158,10 @@ class AppCubit extends Cubit<AddStates> {
                           textAlign: TextAlign.center,
                         ))
                   ]));
-    }else{
+    } else {
       ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar( SnackBar(
-        backgroundColor:theme.onPrimaryContainer,
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        backgroundColor: theme.onPrimaryContainer,
         duration: const Duration(seconds: 3),
         content: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -177,7 +175,8 @@ class AppCubit extends Cubit<AddStates> {
       ));
     }
   }
-  void gameRestart(){
+
+  void gameRestart() {
     score1 = 0;
     score2 = 0;
     score3 = 0;

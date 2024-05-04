@@ -24,6 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
         return Form(
           key: formKey,
           child: Scaffold(
+              resizeToAvoidBottomInset: false,
               backgroundColor: Colors.white,
               appBar: AppBar(title: const Text("Domino Calculator",style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: theme.onPrimaryContainer,foregroundColor: Colors.white,),
               body: Column(
@@ -132,6 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   PlayerName(player: cubit.player1),
                   PlayerName(player: cubit.player2),
+                  if (cubit.numberOfUsers == 3) PlayerName(player: cubit.player3),
                   if (cubit.numberOfUsers == 4) PlayerName(player: cubit.player3),
                   if (cubit.numberOfUsers == 4) PlayerName(player: cubit.player4),
                   const SizedBox(
